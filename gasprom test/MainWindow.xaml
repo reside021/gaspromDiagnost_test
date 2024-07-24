@@ -27,12 +27,12 @@
         <StackPanel Grid.Column="1">
             <StackPanel>
                 <Button VerticalAlignment="Center" Padding="10" Margin="20" Command="{Binding Path=OpenCommand}">
-                    <TextBlock TextAlignment="Center" Text="Load Data"/>
+                    <TextBlock TextAlignment="Center" Text="Загрузить данные"/>
                 </Button>
             </StackPanel>
             <StackPanel>
                 <Button VerticalAlignment="Center" Padding="10" Margin="20" Command="{Binding Path=SaveCommand}">
-                    <TextBlock TextAlignment="Center" Text="Save Data"/>
+                    <TextBlock TextAlignment="Center" Text="Сохранить данные"/>
                 </Button>
             </StackPanel>
             <StackPanel DataContext="{Binding Path=SelectedObj}">
