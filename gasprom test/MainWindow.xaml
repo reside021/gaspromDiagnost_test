@@ -1,0 +1,84 @@
+﻿<Window x:Class="gasprom_test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gasprom_test"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Path=Objects}" SelectedItem="{Binding Path=SelectedObj}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Binding="{Binding Path=Distance}"/>
+                <DataGridTextColumn Binding="{Binding Path=Angle}"/>
+                <DataGridTextColumn Binding="{Binding Path=Width}"/>
+                <DataGridTextColumn Binding="{Binding Path=Hegth}"/>
+                <DataGridTextColumn Binding="{Binding Path=IsDefect}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel>
+                <Button VerticalAlignment="Center" Padding="10" Margin="20" Command="{Binding Path=OpenCommand}">
+                    <TextBlock TextAlignment="Center" Text="Load Data"/>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <Button VerticalAlignment="Center" Padding="10" Margin="20" Command="{Binding Path=SaveCommand}">
+                    <TextBlock TextAlignment="Center" Text="Save Data"/>
+                </Button>
+            </StackPanel>
+            <StackPanel DataContext="{Binding Path=SelectedObj}">
+                <TextBlock TextAlignment="Center" Text="Choose object:" />
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Name: " />
+                    <TextBlock Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Distance: " />
+                    <TextBlock Text="{Binding Path=Distance, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Angle: " />
+                    <TextBlock Text="{Binding Path=Angle, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Width: " />
+                    <TextBlock Text="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Hegth: " />
+                    <TextBlock Text="{Binding Path=Hegth, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="IsDefect: " />
+                    <TextBlock Text="{Binding Path=IsDefect, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel DataContext="{Binding Path=Rect}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="120" Grid.Column="2">
+            <Border Width="200" Height="120" BorderBrush="Black" BorderThickness="2">
+                <Canvas>
+                    <Rectangle Canvas.Left="{Binding Path=Left, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="{Binding Path=Top, UpdateSourceTrigger=PropertyChanged}" Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}" >
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black"/>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                </Canvas>
+            </Border>
+        </StackPanel>
+            
+            
+
+
+    </Grid>
+</Window>
